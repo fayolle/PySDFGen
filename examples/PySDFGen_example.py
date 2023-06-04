@@ -94,7 +94,7 @@ def main(argv):
     res = args.res
 
     V, F = readOFF(args.off_file_path)
-    sdf = PySDFGen.compute_sdf(V, F, res)
+    (sdf, origin, spacing) = PySDFGen.compute_sdf(V, F, res)
     sdf_data = np.reshape(np.swapaxes(sdf, 0, 2), (res**3, 1))
     sdf_data = sdf_data.reshape(-1, 1)
 
@@ -102,8 +102,8 @@ def main(argv):
         args.vtk_file_path,
         res,
         sdf_data,
-        spacing=(1.0 / float(res), 1.0 / float(res), 1.0 / float(res)),
-        origin=(-.5, -.5, -.5),
+        spacing=spacing,
+        origin=origin
     )
 
 

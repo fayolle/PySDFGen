@@ -15,9 +15,16 @@ def normalize(V, scale=0.8):
     return Vn
 
 
-def compute_sdf(V, F, res=64):
-    """Convert a mesh to an SDF. Wrapper to SDFGen."""
+def compute_sdf_normalized(V, F, res=64):
+    """Normalize a mesh and convert a mesh to an SDF. Wrapper to SDFGen."""
     Vn = normalize(V)
-    sdf = PySDFGen.native.compute_sdf(Vn, F, res)
+    sdf = PySDFGen.native.compute_sdf_normalized(Vn, F, res)
 
     return sdf
+
+
+def compute_sdf(V, F, res=64):
+    """Convert a mesh to an SDF. Wrapper to SDFGen."""
+    (sdf, origin, spacing) = PySDFGen.native.compute_sdf(V, F, res)
+
+    return (sdf, origin, spacing)
