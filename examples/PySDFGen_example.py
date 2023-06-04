@@ -102,8 +102,8 @@ def main(argv):
         args.vtk_file_path,
         res,
         sdf_data,
-        spacing=(2.0 / float(res), 2.0 / float(res), 2.0 / float(res)),
-        origin=(-1.0, -1.0, -1.0),
+        spacing=(1.0 / float(res), 1.0 / float(res), 1.0 / float(res)),
+        origin=(-.5, -.5, -.5),
     )
 
 

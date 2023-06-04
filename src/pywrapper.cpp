@@ -31,8 +31,8 @@ compute_sdf(pybind11::array_t<float> V,
 
   
   // The mesh is already normalized
-  Vec3f min_box(-1.f, -1.f, -1.f);
-  float delta_x = 2.f / (float)res;
+  Vec3f min_box(-.5f, -.5f, -.5f);
+  float delta_x = 1.f / (float)res;
 
   Array3f phi_grid;
   make_level_set3(face_list, vert_list, min_box, delta_x,

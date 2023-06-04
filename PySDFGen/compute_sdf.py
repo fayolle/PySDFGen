@@ -4,12 +4,12 @@ import PySDFGen.native
 def normalize(V, scale=0.8):
     """
     Normalize a mesh given its vertices.
-    Return the normalized vertices in (-1,-1,-1)x(1,1,1)
+    Return the normalized vertices in the unit box centered at the origin
     """
     min_box = V.min(0)
     max_box = V.max(0)
     c = (min_box + max_box) * 0.5
-    s = 2.0 * scale / (max_box - min_box).max()
+    s = 1.0 * scale / (max_box - min_box).max()
     Vn = (V - c) * s
 
     return Vn
