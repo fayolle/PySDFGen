@@ -1,7 +1,7 @@
 import PySDFGen.native
 
 
-def normalize(V, scale=0.8):
+def normalize(V, scale=0.9):
     """
     Normalize a mesh given its vertices.
     Return the normalized vertices in the unit box centered at the origin
