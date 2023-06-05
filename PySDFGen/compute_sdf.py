@@ -1,7 +1,7 @@
 import PySDFGen.native
 
 
-def normalize(V, scale=0.9):
+def normalize_mesh(V, scale=1.0):
     """
     Normalize a mesh given its vertices.
     Return the normalized vertices in the unit box centered at the origin
@@ -15,16 +15,10 @@ def normalize(V, scale=0.9):
     return Vn
 
 
-def compute_sdf_normalized(V, F, res=64):
-    """Normalize a mesh and convert a mesh to an SDF. Wrapper to SDFGen."""
-    Vn = normalize(V)
-    sdf = PySDFGen.native.compute_sdf_normalized(Vn, F, res)
-
-    return sdf
-
-
-def compute_sdf(V, F, res=64):
+def compute_sdf(V, F, res=64, normalize=False):
     """Convert a mesh to an SDF. Wrapper to SDFGen."""
+    if normalize:
+        V = normalize_mesh(V)
     (sdf, origin, spacing) = PySDFGen.native.compute_sdf(V, F, res)
 
     return (sdf, origin, spacing)

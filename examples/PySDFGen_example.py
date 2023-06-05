@@ -44,7 +44,7 @@ def readOFF(filename):
         line = line.split()
         num_vert = int(line[0])
         if num_vert != 3:
-            raise Exception("Only OFF with triangles are handled")
+            raise Exception("Only triangle meshes are handled")
 
         tris.append((int(line[1]), int(line[2]), int(line[3])))
 
@@ -53,7 +53,7 @@ def readOFF(filename):
 
 
 # Save field
-def writeVTK(filename, res, field, spacing, origin=(-1.0, -1.0, -1.0)):
+def writeVTK(filename, res, field, spacing, origin):
     resx = res
     resy = res
     resz = res
